@@ -214,14 +214,14 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\HomeVMsController.cs" />
+    <Compile Include="Controllers\SeedController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\DatabaseContext.cs" />
     <Compile Include="Models\Genre.cs" />
     <Compile Include="Models\Movie.cs" />
-    <Compile Include="Models\MovieContext.cs" />
     <Compile Include="Models\MovieDatabaseInitializer.cs" />
     <Compile Include="Models\Register.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -240,6 +240,13 @@
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\AfterLogin.cshtml" />
     <Content Include="Views\Account\Index.cshtml" />
+    <Content Include="Views\Seed\AddGenres.cshtml" />
+    <Content Include="Views\HomeVMs\Create.cshtml" />
+    <Content Include="Views\HomeVMs\Delete.cshtml" />
+    <Content Include="Views\HomeVMs\Details.cshtml" />
+    <Content Include="Views\HomeVMs\Edit.cshtml" />
+    <Content Include="Views\HomeVMs\Index.cshtml" />
+    <Content Include="Views\Seed\AddMovies.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -249,8 +256,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Home\" />
-    <Folder Include="Views\Seed\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

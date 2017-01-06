@@ -8,6 +8,7 @@ namespace Moviesily.Models
 {
     public class Genre
     {
+        [Key]
         [ScaffoldColumn(false)]
         public int GenreID { get; set; }
 
