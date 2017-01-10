@@ -317,7 +317,7 @@ namespace Moviesily.Controllers
                     Image = "../Images/starwars.jpg",
                     GenreID = 7
                 });
-
+                
                 db.SaveChanges();
                 return View();
             }

@@ -28,20 +28,21 @@ namespace Moviesily.Controllers
             }
         }
 
-        // GET: HomeVMs/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            HomeVM homeVM = db.HomeVMs.Find(id);
-            if (homeVM == null)
-            {
-                return HttpNotFound();
-            }
-            return View(homeVM);
+        // GET: /Store/Browse?genre=Disco  
+        public ActionResult Browse(string genre)
+        {     // Retrieve Genre and its Associated Albums from database     
+            var genreModel = db.Genres.Include("Movies")         
+                .Single(g => g.GenreName == genre);  
+            return View(genreModel);
         }
+
+        // GET: /Store/Details/5  
+        public string Details(int id)
+        {
+            string message = "HomeVMs.Details, ID = " + id;
+            return message;
+        }
+
 
         // GET: HomeVMs/Create
         public ActionResult Create()

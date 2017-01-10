@@ -247,6 +247,7 @@
     <Content Include="Views\HomeVMs\Edit.cshtml" />
     <Content Include="Views\HomeVMs\Index.cshtml" />
     <Content Include="Views\Seed\AddMovies.cshtml" />
+    <Content Include="Views\HomeVMs\Browse.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

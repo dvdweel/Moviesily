@@ -1,0 +1,10 @@
+﻿@model Moviesily.Models.Genre 
+    
+@{ ViewBag.Title = "Browse"; } 
+
+< h2 > Browsing Genre: @Model.GenreName </ h2 >
+<ul>
+    @foreach (var item in Model.Movies)
+    {
+        <li>            @item.Title         </li>     }
+</ul>  

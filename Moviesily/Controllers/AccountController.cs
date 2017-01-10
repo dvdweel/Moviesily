@@ -55,7 +55,7 @@ namespace Moviesily.Controllers
                 {
                     Session["UserID"] = usr.UserID.ToString();
                     Session["Username"] = usr.Username.ToString();
-                    return RedirectToAction("AfterLogin");
+                    return RedirectToAction("Index", "HomeVMs");
                 }
                 else
                 {
