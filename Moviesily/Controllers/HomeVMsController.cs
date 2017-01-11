@@ -27,10 +27,9 @@ namespace Moviesily.Controllers
                 return View(HomeVM);
             }
         }
-
-        // GET: /Store/Browse?genre=Disco  
+ 
         public ActionResult Browse(string genre)
-        {     // Retrieve Genre and its Associated Albums from database     
+        {       
             var genreModel = db.Genres.Include("Movies")         
                 .Single(g => g.GenreName == genre);  
             return View(genreModel);

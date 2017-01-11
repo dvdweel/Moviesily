@@ -1,10 +1,22 @@
-﻿@model Moviesily.Models.Genre 
-    
-@{ ViewBag.Title = "Browse"; } 
+﻿@model Moviesily.Models.Genre
 
-< h2 > Browsing Genre: @Model.GenreName </ h2 >
-<ul>
-    @foreach (var item in Model.Movies)
-    {
-        <li>            @item.Title         </li>     }
-</ul>  
+@{ ViewBag.Title = "Browse"; }
+
+<div class="col-lg-3">
+    Browsing Genre: @Model.GenreName
+    <p>
+        @Html.ActionLink("Back to Index", "Index")
+    </p>
+</div>
+
+@foreach (var item in Model.Movies)
+            {
+    <div class="col-lg-3">
+        <img src="@item.Image" width="250" height="350" />
+        <label>Title |</label> @Html.DisplayFor(modelItem => item.Title)<br />
+        <label>Director |</label> @Html.DisplayFor(modelItem => item.Director)<br />
+        <label>ReleaseYear |</label> @Html.DisplayFor(modelItem => item.ReleaseYear)<br />
+        <label>Language |</label> @Html.DisplayFor(modelItem => item.Language)<br />
+        <label>Descripton |</label> @Html.DisplayFor(modelItem => item.Description)<br />
+    </div>
+}
