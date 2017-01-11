@@ -73,7 +73,7 @@ namespace Moviesily.Controllers
                     Director = "David Ayer",
                     ReleaseYear = 2016,
                     Language = "English",
-                    Description = "A secret government agency recruits some of the most dangerous incarcerated super-villains to form a defensive task force. Their first mission: save the world from the apocalypse.",
+                    Description = "A secret government agency recruits some of the most dangerous incarcerated super-villains to form a defensive task force. Their first mission: save the world.",
                     Image = "../Images/suicidesquad.jpg",
                     GenreID = 1
                 });
@@ -85,7 +85,7 @@ namespace Moviesily.Controllers
                     Director = "Christopher Nolan",
                     ReleaseYear = 2008,
                     Language = "English",
-                    Description = "When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, the caped crusader must come to terms with one of the greatest psychological tests of his ability to fight injustice.",
+                    Description = "When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, the caped crusader must come to terms with one of the greatest psychological test.",
                     Image = "../Images/darkknight.jpg",
                     GenreID = 1
                 });
@@ -121,7 +121,7 @@ namespace Moviesily.Controllers
                     Director = "Andrew Stanton",
                     ReleaseYear = 2008,
                     Language = "English",
-                    Description = "In the distant future, a small waste-collecting robot inadvertently embarks on a space journey that will ultimately decide the fate of mankind.",
+                    Description = "In the distant future, a small waste-collecting robot inadvertently embarks on a space journey that will ultimately decide the fate of mankind. Walle and Eve",
                     Image = "../Images/walle.jpg",
                     GenreID = 2
                 });
@@ -133,7 +133,7 @@ namespace Moviesily.Controllers
                     Director = "John Lasseter",
                     ReleaseYear = 1995,
                     Language = "English",
-                    Description = "A cowboy doll is profoundly threatened and jealous when a new spaceman figure supplants him as top toy in a boy's room.",
+                    Description = "A cowboy doll is profoundly threatened and jealous when a new spaceman figure supplants him as top toy in a boy's room. Oh So many toys in his room",
                     Image = "../Images/toystory.jpg",
                     GenreID = 2
                 });
@@ -141,7 +141,7 @@ namespace Moviesily.Controllers
                 db.Movies.Add(new Movie()
                 {
                     MovieID = 7,
-                    Title = "The Lord of the Rings: The Return of the King",
+                    Title = "The Lord of the Rings",
                     Director = "Peter Jackson",
                     ReleaseYear = 2003,
                     Language = "English",
@@ -157,7 +157,7 @@ namespace Moviesily.Controllers
                     Director = "Guillermo del Toro",
                     ReleaseYear = 2006,
                     Language = "Spanish",
-                    Description = "In the falangist Spain of 1944, the bookish young stepdaughter of a sadistic army officer escapes into an eerie but captivating fantasy world.",
+                    Description = "In the falangist Spain of 1944, the bookish young stepdaughter of a sadistic army officer escapes into an eerie but captivating labyrinth fantasy world.",
                     Image = "../Images/panslabyrinth.jpg",
                     GenreID = 3
                 });
@@ -169,7 +169,7 @@ namespace Moviesily.Controllers
                     Director = "David Yates",
                     ReleaseYear = 2011,
                     Language = "English",
-                    Description = "Harry, Ron and Hermione search for Voldemort's remaining Horcruxes in their effort to destroy the Dark Lord as the final battle rages on at Hogwarts.",
+                    Description = "Harry, Ron and Hermione search for Voldemort's remaining in their effort to destroy the Dark Lord as the final battle rages on at Hogwarts.",
                     Image = "../Images/harrypotter.jpg",
                     GenreID = 3
                 });
@@ -193,7 +193,7 @@ namespace Moviesily.Controllers
                     Director = "Stanley Kubrick",
                     ReleaseYear = 1980,
                     Language = "English",
-                    Description = "A family heads to an isolated hotel for the winter where an evil and spiritual presence influences the father into violence, while his psychic son sees horrific forebodings from the past and of the future.",
+                    Description = "A family heads to an isolated hotel for the winter where an evil and spiritual presence influences the father into violence, while his psychic son sees horrific forebodings.",
                     Image = "../Images/theshining.jpg",
                     GenreID = 4
                 });
@@ -205,7 +205,7 @@ namespace Moviesily.Controllers
                     Director = "Ridley Scott",
                     ReleaseYear = 1979,
                     Language = "English",
-                    Description = "After a space merchant vessel perceives an unknown transmission as distress call, their landing on the source moon finds one of the crew attacked by a mysterious lifeform.",
+                    Description = "After a space merchant vessel perceives an unknown transmission as distress call, their landing on the source moon.",
                     Image = "../Images/alien.jpg",
                     GenreID = 4
                 });
@@ -265,7 +265,7 @@ namespace Moviesily.Controllers
                     Director = "Martin Scorsese",
                     ReleaseYear = 2013,
                     Language = "English",
-                    Description = "Based on the true story of Jordan Belfort, from his rise to a wealthy stock-broker living the high life to his fall involving crime, corruption and the federal government.",
+                    Description = "Based on the true story of Jordan Belfort, from his rise to a wealthy stock-broker living the high life to his fall involving crime and corruption.",
                     Image = "../Images/thewolfofwallstreet.jpg",
                     GenreID = 6
                 });
@@ -274,10 +274,10 @@ namespace Moviesily.Controllers
                 {
                     MovieID = 18,
                     Title = "The Intouchables",
-                    Director = "Olivier Nakache, Eric Toledano",
+                    Director = "Olivier Nakache",
                     ReleaseYear = 2011,
                     Language = "French",
-                    Description = "After he becomes a quadriplegic from a paragliding accident, an aristocrat hires a young man from the projects to be his caregiver.",
+                    Description = "After he becomes a quadriplegic from a paragliding accident, an aristocrat hires a young man from the projects.",
                     Image = "../Images/intouchables.jpg",
                     GenreID = 6
                 });
@@ -289,7 +289,7 @@ namespace Moviesily.Controllers
                     Director = "Christopher Nolan",
                     ReleaseYear = 2014,
                     Language = "English",
-                    Description = "A team of explorers travel through a wormhole in space in an attempt to ensure humanity's survival.",
+                    Description = "A team of explorers travel through a wormhole in space in an attempt to ensure humanity's survival. A movie ",
                     Image = "../Images/interstellar.jpg",
                     GenreID = 7
                 });
@@ -298,7 +298,7 @@ namespace Moviesily.Controllers
                 {
                     MovieID = 20,
                     Title = "The Matrix",
-                    Director = "Lana Wachowski, Lilly Wachowski",
+                    Director = "Lana Wachowski",
                     ReleaseYear = 1999,
                     Language = "English",
                     Description = "A computer hacker learns from mysterious rebels about the true nature of his reality and his role in the war against its controllers.",
@@ -309,11 +309,11 @@ namespace Moviesily.Controllers
                 db.Movies.Add(new Movie()
                 {
                     MovieID = 21,
-                    Title = "Star Wars: Episode V - The Empire Strikes Back",
+                    Title = "Star Wars: Episode V",
                     Director = "Irvin Kershner",
                     ReleaseYear = 1980,
                     Language = "English",
-                    Description = "After the rebels have been brutally overpowered by the Empire on their newly established base, Luke Skywalker takes advanced Jedi training with Master Yoda, while his friends are pursued by Darth Vader as part of his plan to capture Luke.",
+                    Description = "After the rebels have been brutally overpowered by the Empire on their newly established base, Luke Skywalker takes advanced Jedi training.",
                     Image = "../Images/starwars.jpg",
                     GenreID = 7
                 });
