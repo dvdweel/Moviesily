@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Moviesily.Models;
+using System.Web.Security;
 
 namespace Moviesily.Controllers
 {
@@ -36,7 +37,7 @@ namespace Moviesily.Controllers
                 ModelState.Clear();
                 ViewBag.Message = register.FirstName + " " + register.LastName + " De registratie is gelukt.";
             }
-            return View();
+            return RedirectToAction("Login", "Account");
         }
 
         //Login
@@ -55,7 +56,16 @@ namespace Moviesily.Controllers
                 {
                     Session["UserID"] = usr.UserID.ToString();
                     Session["Username"] = usr.Username.ToString();
-                    return RedirectToAction("Index", "HomeVMs");
+
+                    if (usr.Role == 1)
+                    {
+                        Session["Admin"] = true;
+                        return RedirectToAction("Index", "Account");
+                    }
+                    else
+                    {
+                        return RedirectToAction("Index", "HomeVMs");
+                    }
                 }
                 else
                 {
@@ -75,6 +85,15 @@ namespace Moviesily.Controllers
             {
                 return RedirectToAction("Login");
             }
+        }
+
+        public ActionResult LogOut()
+        {
+            FormsAuthentication.SignOut();
+            Session.Abandon();
+
+            return RedirectToAction("Index", "HomeVMs");
+
         }
     }
 }

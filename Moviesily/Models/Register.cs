@@ -31,5 +31,7 @@ namespace Moviesily.Models
         [Compare("Password",ErrorMessage ="Vul nogmaals hetzelfde wachtwoord in.")]
         [DataType(DataType.Password)]
         public string ConfirmPassword { get; set; }
+
+        public int Role { get; set; }
     }
 }
