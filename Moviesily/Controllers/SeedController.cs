@@ -10,6 +10,38 @@ namespace Moviesily.Controllers
     public class SeedController : Controller
     {
         // GET: Seed
+
+        public ActionResult AddUsers()
+        {
+            using (var db = new DatabaseContext())
+            {
+                db.Register.Add(new Register()
+                {
+                    FirstName = "user",
+                    LastName = "user",
+                    Email = "user@user.nl",
+                    Username = "user",
+                    Password = "user",
+                    ConfirmPassword = "user",
+                    Role = 0
+                });
+
+                db.Register.Add(new Register()
+                {
+                    FirstName = "admin",
+                    LastName = "admin",
+                    Email = "admin@admin.nl",
+                    Username = "admin",
+                    Password = "admin",
+                    ConfirmPassword = "admin",
+                    Role = 1
+                });
+
+                db.SaveChanges();
+                return View();
+            }
+        }
+
         public ActionResult AddGenres()
         {
             using (var db = new DatabaseContext())

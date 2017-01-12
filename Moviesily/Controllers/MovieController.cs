@@ -7,125 +7,115 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Moviesily.Models;
-using Moviesily.ViewModels;
 
 namespace Moviesily.Controllers
 {
-    public class HomeVMsController : Controller
+    public class MovieController : Controller
     {
         private DatabaseContext db = new DatabaseContext();
 
-        // GET: HomeVMs
+        // GET: Movie
         public ActionResult Index()
         {
-            if (Session["UserID"] != null)
-            {
-                using (var db = new DatabaseContext())
-                {
-                    var HomeVM = new HomeVM();
-                    HomeVM.Genres = db.Genres.ToList();
-                    HomeVM.Movies = db.Movies.ToList();
-
-                    return View(HomeVM);
-                }
-            }
-            else
-            {
-                return RedirectToAction("Login", "Account");
-            }
-       }
-
-        public ActionResult Browse(string genre)
-        {
-            var genreModel = db.Genres.Include("Movies")
-                .Single(g => g.GenreName == genre);
-            return View(genreModel);
+            var movies = db.Movies.Include(m => m.Genre);
+            return View(movies.ToList());
         }
 
-        // GET: /Store/Details/5  
-        public string Details(int id)
+        // GET: Movie/Details/5
+        public ActionResult Details(int? id)
         {
-            string message = "HomeVMs.Details, ID = " + id;
-            return message;
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Movie movie = db.Movies.Find(id);
+            if (movie == null)
+            {
+                return HttpNotFound();
+            }
+            return View(movie);
         }
 
-
-        // GET: HomeVMs/Create
+        // GET: Movie/Create
         public ActionResult Create()
         {
+            ViewBag.GenreID = new SelectList(db.Genres, "GenreID", "GenreName");
             return View();
         }
 
-        // POST: HomeVMs/Create
+        // POST: Movie/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id")] HomeVM homeVM)
+        public ActionResult Create([Bind(Include = "MovieID,Title,Director,ReleaseYear,Language,Description,Image,GenreID")] Movie movie)
         {
             if (ModelState.IsValid)
             {
-                db.HomeVMs.Add(homeVM);
+                db.Movies.Add(movie);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(homeVM);
+            ViewBag.GenreID = new SelectList(db.Genres, "GenreID", "GenreName", movie.GenreID);
+            return View(movie);
         }
 
-        // GET: HomeVMs/Edit/5
+        // GET: Movie/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            HomeVM homeVM = db.HomeVMs.Find(id);
-            if (homeVM == null)
+            Movie movie = db.Movies.Find(id);
+            if (movie == null)
             {
                 return HttpNotFound();
             }
-            return View(homeVM);
+            ViewBag.GenreID = new SelectList(db.Genres, "GenreID", "GenreName", movie.GenreID);
+            return View(movie);
         }
 
-        // POST: HomeVMs/Edit/5
+        // POST: Movie/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id")] HomeVM homeVM)
+        public ActionResult Edit([Bind(Include = "MovieID,Title,Director,ReleaseYear,Language,Description,Image,GenreID")] Movie movie)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(homeVM).State = EntityState.Modified;
+                db.Entry(movie).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(homeVM);
+            ViewBag.GenreID = new SelectList(db.Genres, "GenreID", "GenreName", movie.GenreID);
+            return View(movie);
         }
 
-        // GET: HomeVMs/Delete/5
+        // GET: Movie/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            HomeVM homeVM = db.HomeVMs.Find(id);
-            if (homeVM == null)
+            Movie movie = db.Movies.Find(id);
+            if (movie == null)
             {
                 return HttpNotFound();
             }
-            return View(homeVM);
+            return View(movie);
         }
 
-        // POST: HomeVMs/Delete/5
+        // POST: Movie/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            HomeVM homeVM = db.HomeVMs.Find(id);
-            db.HomeVMs.Remove(homeVM);
+            Movie movie = db.Movies.Find(id);
+            db.Movies.Remove(movie);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
