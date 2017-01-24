@@ -16,8 +16,6 @@ namespace Moviesily
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
 
-            // Initialize the database
-            Database.SetInitializer(new MovieDatabaseInitializer());
         }
     }
 }

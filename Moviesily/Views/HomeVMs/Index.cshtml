@@ -6,18 +6,18 @@
 
 
 
-<div class="col-lg-3">
+<div class="col-lg-3 genres">
 
     @foreach (var item in Model.Genres)
     {
 
-        <a href="/HomeVMs/Browse?genre=@item.GenreName">@item.GenreName</a><br />
+        <a href="/HomeVMs/Browse?genre=@item.GenreName"><input type="submit" value="@item.GenreName" class="belize-hole-flat-button"></a><br />
 
     }
 </div>
 @foreach (var item in Model.Movies)
 {
-    <div class="col-lg-3">
+    <div class="col-lg-3 movies">
         <img src="@item.Image" width="250" height="350" />
         <label>Title |</label> @Html.DisplayFor(modelItem => item.Title)<br />
         <label>Director |</label> @Html.DisplayFor(modelItem => item.Director)<br />

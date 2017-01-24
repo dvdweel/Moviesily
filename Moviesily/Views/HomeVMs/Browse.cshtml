@@ -2,16 +2,16 @@
 
 @{ ViewBag.Title = "Browse"; }
 
-<div class="col-lg-3">
-    Browsing Genre: @Model.GenreName
+<div class="col-lg-3 genres">
+    <h1>Genre: @Model.GenreName</h1>
     <p>
-        @Html.ActionLink("Back to Index", "Index")
+        <a href="/HomeVMs/Index"><input type="submit" value="Back to Index" class="belize-hole-flat-button"></a><br />
     </p>
 </div>
 
 @foreach (var item in Model.Movies)
             {
-    <div class="col-lg-3">
+    <div class="col-lg-3 movies">
         <img src="@item.Image" width="250" height="350" />
         <label>Title |</label> @Html.DisplayFor(modelItem => item.Title)<br />
         <label>Director |</label> @Html.DisplayFor(modelItem => item.Director)<br />
