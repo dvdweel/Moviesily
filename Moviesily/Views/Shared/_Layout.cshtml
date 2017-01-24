@@ -24,17 +24,17 @@
                 <ul class="nav navbar-nav">
                     @if (Session["UserID"] == null)
                     {
-                        <li>@Html.ActionLink("Sign in", "Login", "Account")</li>
-                        <li>@Html.ActionLink("Register", "Register", "Account")</li>
+                        <li>@Html.ActionLink("SIGN IN", "Login", "Account")</li>
+                        <li>@Html.ActionLink("REGISTER", "Register", "Account")</li>
                     }
                     else
                     {
                         if (Session["Admin"] != null)
                         {
-                            <li>@Html.ActionLink("Users", "Index", "Account")</li>
-                            <li>@Html.ActionLink("Movies","Index", "Movie")</li>
+                            <li>@Html.ActionLink("USERS", "Index", "Account")</li>
+                            <li>@Html.ActionLink("MOVIES","Index", "Movie")</li>
                         }
-                        <li>@Html.ActionLink("Logout", "Logout", "Account")</li>
+                        <li>@Html.ActionLink("LOGOUT", "Logout", "Account")</li>
                     }
 
                     
