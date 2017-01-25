@@ -16,7 +16,7 @@ namespace Moviesily.Controllers
         private DatabaseContext db = new DatabaseContext();
 
         // GET: HomeVMs
-        public ActionResult Index()
+        public ActionResult Index(string searchString)
         {
             if (Session["UserID"] != null)
             {
@@ -38,8 +38,20 @@ namespace Moviesily.Controllers
         public ActionResult Browse(string genre)
         {
             var genreModel = db.Genres.Include("Movies")
-                .Single(g => g.GenreName == genre);
-            return View(genreModel);
+                                .Single(g => g.GenreName == genre);
+                            return View(genreModel);   
+        }
+
+        //search field
+        public ActionResult Search(string searchString)
+        {
+
+            using (var db = new DatabaseContext())
+            {
+                List<Movie> movies = db.Movies.Where(m => m.Title.Contains(searchString) || m.Description.Contains(searchString)).ToList();
+                return View(movies);
+            }
+
         }
 
         // GET: /Store/Details/5  

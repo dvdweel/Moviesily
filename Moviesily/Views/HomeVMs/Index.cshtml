@@ -2,9 +2,16 @@
 
 @{
     ViewBag.Title = "Index";
+} 
+
+@using (Html.BeginForm("Search", "HomeVMs", FormMethod.Get))
+{
+    <p>
+        @*  Categorie: @Html.DropDownList("ReviewCategorie", "All")*@
+        @Html.TextBox("SearchString") <br />
+        <input type="submit" value="Filter" />
+    </p>
 }
-
-
 
 <div class="col-lg-3 genres">
 
@@ -13,7 +20,7 @@
 
         <a href="/HomeVMs/Browse?genre=@item.GenreName"><input type="submit" value="@item.GenreName" class="belize-hole-flat-button"></a><br />
 
-    }
+        }
 </div>
 @foreach (var item in Model.Movies)
 {
