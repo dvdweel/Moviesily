@@ -2,7 +2,6 @@
 @{
     ViewBag.Title = "Search";
 }
-<h2>search</h2>
 
 @using (Html.BeginForm("Search", "HomeVMs", FormMethod.Get))
 {
@@ -13,46 +12,17 @@
     </div>
 }
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Title)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Director)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ReleaseYear)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Language)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
-        <th>
-        </th>
-    </tr>
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Director)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ReleaseYear)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Language)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-        </tr>
-    }
-</table>
+@foreach (var item in Model)
+{
+    <div class="col-lg-3 movies">
+        <img src="@item.Image" width="250" height="350" />
+        <label>Title |</label> @Html.DisplayFor(modelItem => item.Title)<br />
+        <label>Director |</label> @Html.DisplayFor(modelItem => item.Director)<br />
+        <label>ReleaseYear |</label> @Html.DisplayFor(modelItem => item.ReleaseYear)<br />
+        <label>Language |</label> @Html.DisplayFor(modelItem => item.Language)<br />
+        <label>Descripton |</label> @Html.DisplayFor(modelItem => item.Description)<br />
+    </div>
+}
 <br />
-<a href="/Dashboard/Index">Ga terug naar dashboard</a>
+
+<a href="/HomeVMs/Index">Back to all movies</a>
