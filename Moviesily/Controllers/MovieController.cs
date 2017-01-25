@@ -17,30 +17,48 @@ namespace Moviesily.Controllers
         // GET: Movie
         public ActionResult Index()
         {
-            var movies = db.Movies.Include(m => m.Genre);
-            return View(movies.ToList());
+            if (Session["Admin"] != null)
+            {
+                var movies = db.Movies.Include(m => m.Genre);
+                return View(movies.ToList());
+            } else
+            {
+                return RedirectToAction("Index", "HomeVMs");
+            }
         }
 
         // GET: Movie/Details/5
         public ActionResult Details(int? id)
         {
-            if (id == null)
+            if (Session["Admin"] != null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Movie movie = db.Movies.Find(id);
-            if (movie == null)
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                Movie movie = db.Movies.Find(id);
+                if (movie == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(movie);
+            } else
             {
-                return HttpNotFound();
+                return RedirectToAction("Index", "HomeVMs");
             }
-            return View(movie);
         }
 
         // GET: Movie/Create
         public ActionResult Create()
         {
-            ViewBag.GenreID = new SelectList(db.Genres, "GenreID", "GenreName");
-            return View();
+            if (Session["Admin"] != null)
+            {
+                ViewBag.GenreID = new SelectList(db.Genres, "GenreID", "GenreName");
+                return View();
+            } else
+            {
+                return RedirectToAction("Index", "HomeVMs");
+            }
         }
 
         // POST: Movie/Create
@@ -64,17 +82,24 @@ namespace Moviesily.Controllers
         // GET: Movie/Edit/5
         public ActionResult Edit(int? id)
         {
-            if (id == null)
+            if (Session["Admin"] != null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                Movie movie = db.Movies.Find(id);
+                if (movie == null)
+                {
+                    return HttpNotFound();
+                }
+                ViewBag.GenreID = new SelectList(db.Genres, "GenreID", "GenreName", movie.GenreID);
+                return View(movie);
             }
-            Movie movie = db.Movies.Find(id);
-            if (movie == null)
+            else
             {
-                return HttpNotFound();
+                return RedirectToAction("Index", "HomeVMs");
             }
-            ViewBag.GenreID = new SelectList(db.Genres, "GenreID", "GenreName", movie.GenreID);
-            return View(movie);
         }
 
         // POST: Movie/Edit/5
@@ -97,16 +122,22 @@ namespace Moviesily.Controllers
         // GET: Movie/Delete/5
         public ActionResult Delete(int? id)
         {
-            if (id == null)
+            if (Session["Admin"] != null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Movie movie = db.Movies.Find(id);
-            if (movie == null)
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                Movie movie = db.Movies.Find(id);
+                if (movie == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(movie);
+            } else
             {
-                return HttpNotFound();
+                return RedirectToAction("Index", "HomeVMs");
             }
-            return View(movie);
         }
 
         // POST: Movie/Delete/5
