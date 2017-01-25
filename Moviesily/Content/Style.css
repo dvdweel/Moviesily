@@ -28,6 +28,16 @@ label {
 img {
     border: 1px solid darkgray;
 }
+.searchTitle {
+    float:left;
+    margin-right: 25px;
+}
+
+#SearchString{
+    width: 260px;
+    height: 60px;
+    float: left;
+}
 
 /* #Belize Hole Sea Flat Button
 ==================================================*/
@@ -54,4 +64,10 @@ img {
   outline: none;
   -webkit-box-shadow: none;
   box-shadow: none;
+}
+
+.searchButton {
+    width: 500px;
+    font-size: large;
+    font-style: oblique;
 }

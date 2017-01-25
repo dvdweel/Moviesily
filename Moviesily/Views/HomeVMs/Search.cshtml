@@ -6,11 +6,11 @@
 
 @using (Html.BeginForm("Search", "HomeVMs", FormMethod.Get))
 {
-    <p>
-        @*  Categorie: @Html.DropDownList("ReviewCategorie", "All")*@
-        @Html.TextBox("SearchString") <br />
-        <input type="submit" value="Filter" />
-    </p>
+    <div class="col-lg-offset-3 col-lg-9" style="margin-top: 20px">
+        <h2 class="searchTitle">SEARCH MOVIES:</h2>
+        @Html.TextBox("SearchString")
+        <input type="submit" value="Search Movies" class="belize-hole-flat-button searchButton" />
+    </div>
 }
 
 <table class="table">
