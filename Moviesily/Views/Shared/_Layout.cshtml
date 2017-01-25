@@ -18,7 +18,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("MOVIESILY", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("MOVIESILY", "Index", "HomeVMs", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -26,6 +26,7 @@
                     {
                         <li>@Html.ActionLink("SIGN IN", "Login", "Account")</li>
                         <li>@Html.ActionLink("REGISTER", "Register", "Account")</li>
+                    
                     }
                     else
                     {
@@ -34,6 +35,7 @@
                             <li>@Html.ActionLink("USERS", "Index", "Account")</li>
                             <li>@Html.ActionLink("MOVIES","Index", "Movie")</li>
                         }
+                        <li>@Html.ActionLink("ACCOUNT", "Edit/"+Session["UserID"], "Account")</li>
                         <li>@Html.ActionLink("LOGOUT", "Logout", "Account")</li>
                     }
 
