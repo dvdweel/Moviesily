@@ -33,5 +33,8 @@ namespace Moviesily.Models
 
         public virtual Genre Genre { get; set; }
 
+        [Required]
+        public int Active { get; set; }
+
     }
 }

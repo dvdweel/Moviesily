@@ -27,6 +27,28 @@ namespace Moviesily.Controllers
             }
         }
 
+        // functies om blogposts te acitiveren & deactiveren
+        [HttpPost]
+        public ActionResult Activate(int id)
+        {
+            Movie movies = db.Movies.Find(id);
+            movies.Active = 1;
+            db.SaveChanges();
+
+            return RedirectToAction("Index","Movie");
+        }
+
+        [HttpPost]
+        public ActionResult Deactivate(int id)
+        {
+            Movie movies = db.Movies.Find(id);
+            movies.Active = 0;
+            db.SaveChanges();
+
+            return RedirectToAction("Index", "Movie");
+        }
+
+
         // GET: Movie/Details/5
         public ActionResult Details(int? id)
         {

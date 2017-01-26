@@ -30,6 +30,9 @@
             @Html.DisplayNameFor(model => model.Description)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.Active)
+        </th>
+        <th>
 
         </th>
     </tr>
@@ -53,6 +56,24 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @if (item.Active == 0)
+            {
+
+            <form method="post" action="/Movie/Activate/@item.MovieID">
+                <input type="submit" value="activeren"
+                       class="btn btn-success" />
+
+            </form>
+            }
+            else
+            {
+            <form method="post" action="/Movie/Deactivate/@item.MovieID">
+                <input type="submit" value="deactiveren"
+                       class="btn btn-danger" />
+            </form>
+            }
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.MovieID }) |
