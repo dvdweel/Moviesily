@@ -24,7 +24,7 @@ namespace Moviesily.Controllers
                 {
                     var HomeVM = new HomeVM();
                     HomeVM.Genres = db.Genres.ToList();
-                    HomeVM.Movies = db.Movies.ToList();
+                    HomeVM.Movies = db.Movies.Where(m => m.Active == 1).ToList();
 
                     return View(HomeVM);
                 }
