@@ -17,31 +17,52 @@ namespace Moviesily.Controllers
         // GET: Review
         public ActionResult Index()
         {
-            var reviews = db.Reviews.Include(r => r.Movie).Include(r => r.Register);
-            return View(reviews.ToList());
+            if (Session["UserID"] != null)
+            {
+                var reviews = db.Reviews.Include(r => r.Movie).Include(r => r.Register);
+                return View(reviews.ToList());
+            }
+            else
+            {
+                return RedirectToAction("Index", "HomeVMs");
+            }
         }
 
         // GET: Review/Details/5
         public ActionResult Details(int? id)
         {
-            if (id == null)
+            if (Session["UserID"] != null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                Review review = db.Reviews.Find(id);
+                if (review == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(review);
             }
-            Review review = db.Reviews.Find(id);
-            if (review == null)
+            else
             {
-                return HttpNotFound();
+                return RedirectToAction("Index", "HomeVMs");
             }
-            return View(review);
         }
 
         // GET: Review/Create
         public ActionResult Create()
         {
-            ViewBag.MovieID = new SelectList(db.Movies, "MovieID", "Title");
-            ViewBag.UserID = new SelectList(db.Register, "UserID", "Username");
-            return View();
+            if (Session["UserID"] != null)
+            {
+                ViewBag.MovieID = new SelectList(db.Movies, "MovieID", "Title");
+                ViewBag.UserID = new SelectList(db.Register, "UserID", "Username");
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Index", "HomeVMs");
+            }
         }
 
         // POST: Review/Create
@@ -66,18 +87,25 @@ namespace Moviesily.Controllers
         // GET: Review/Edit/5
         public ActionResult Edit(int? id)
         {
-            if (id == null)
+            if (Session["UserID"] != null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                Review review = db.Reviews.Find(id);
+                if (review == null)
+                {
+                    return HttpNotFound();
+                }
+                ViewBag.MovieID = new SelectList(db.Movies, "MovieID", "Title", review.MovieID);
+                ViewBag.UserID = new SelectList(db.Register, "UserID", "Username", review.UserID);
+                return View(review);
             }
-            Review review = db.Reviews.Find(id);
-            if (review == null)
+            else
             {
-                return HttpNotFound();
+                return RedirectToAction("Index", "HomeVMs");
             }
-            ViewBag.MovieID = new SelectList(db.Movies, "MovieID", "Title", review.MovieID);
-            ViewBag.UserID = new SelectList(db.Register, "UserID", "Username", review.UserID);
-            return View(review);
         }
 
         // POST: Review/Edit/5
@@ -101,16 +129,23 @@ namespace Moviesily.Controllers
         // GET: Review/Delete/5
         public ActionResult Delete(int? id)
         {
-            if (id == null)
+            if (Session["UserID"] != null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                Review review = db.Reviews.Find(id);
+                if (review == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(review);
             }
-            Review review = db.Reviews.Find(id);
-            if (review == null)
+            else
             {
-                return HttpNotFound();
+                return RedirectToAction("Index", "HomeVMs");
             }
-            return View(review);
         }
 
         // POST: Review/Delete/5
