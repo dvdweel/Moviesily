@@ -22,5 +22,7 @@ namespace Moviesily.Models
         public DbSet<Movie> Movies { get; set; }
 
         public System.Data.Entity.DbSet<Moviesily.ViewModels.HomeVM> HomeVMs { get; set; }
+
+        public System.Data.Entity.DbSet<Moviesily.Models.Review> Reviews { get; set; }
     }
 }
