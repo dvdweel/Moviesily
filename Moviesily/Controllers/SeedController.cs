@@ -42,6 +42,31 @@ namespace Moviesily.Controllers
             }
         }
 
+        public ActionResult AddReviews()
+        {
+            using (var db = new DatabaseContext())
+            {
+                db.Reviews.Add(new Review()
+                {
+                    ReviewID = 1,
+                    MovieID = 1,
+                    UserID = 1,
+                    Content = "Dit is echt een hele slechte film."
+                });
+
+                db.Reviews.Add(new Review()
+                {
+                    ReviewID = 2,
+                    MovieID = 2,
+                    UserID = 1,
+                    Content = "Beste film die ik ooit heb gezien in mijn leven."
+                });
+
+                db.SaveChanges();
+                return View();
+            }
+        }
+
         public ActionResult AddGenres()
         {
             using (var db = new DatabaseContext())
@@ -109,7 +134,7 @@ namespace Moviesily.Controllers
                     Image = "../Images/suicidesquad.jpg",
                     GenreID = 1,
                     Active = 1
-                   
+
                 });
 
                 db.Movies.Add(new Movie()
@@ -371,7 +396,7 @@ namespace Moviesily.Controllers
                     GenreID = 7,
                     Active = 1
                 });
-                
+
                 db.SaveChanges();
                 return View();
             }

@@ -32,9 +32,11 @@ namespace Moviesily.Models
         public int? GenreID { get; set; }
 
         public virtual Genre Genre { get; set; }
-
+   
         [Required]
         public int Active { get; set; }
+
+        public virtual ICollection<Review> Review { get; set; }
 
     }
 }

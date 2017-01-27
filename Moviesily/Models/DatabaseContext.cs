@@ -12,7 +12,7 @@ namespace Moviesily.Models
         public DatabaseContext() : base("name=DatabaseContext")
         {
             Database.SetInitializer<DatabaseContext>(
-                new DropCreateDatabaseAlways<DatabaseContext>());
+                new DropCreateDatabaseIfModelChanges<DatabaseContext>());
         }
 
         public DbSet<Register> Register { get; set; }
@@ -21,6 +21,8 @@ namespace Moviesily.Models
 
         public DbSet<Movie> Movies { get; set; }
 
-        public System.Data.Entity.DbSet<Moviesily.ViewModels.HomeVM> HomeVMs { get; set; }
+        public DbSet<ViewModels.HomeVM> HomeVMs { get; set; }
+
+        public DbSet<Review> Reviews { get; set; }
     }
 }
