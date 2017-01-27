@@ -26,7 +26,7 @@
                     {
                         <li>@Html.ActionLink("SIGN IN", "Login", "Account")</li>
                         <li>@Html.ActionLink("REGISTER", "Register", "Account")</li>
-                    
+                     
                     }
                     else
                     {
@@ -36,6 +36,7 @@
                             <li>@Html.ActionLink("MOVIES","Index", "Movie")</li>
                         }
                         <li>@Html.ActionLink("ACCOUNT", "Edit/"+Session["UserID"], "Account")</li>
+                        <li>@Html.ActionLink("REVIEWS", "Index", "Review")</li>
                         <li>@Html.ActionLink("LOGOUT", "Logout", "Account")</li>
                     }
 

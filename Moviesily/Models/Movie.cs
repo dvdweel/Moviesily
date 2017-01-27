@@ -36,5 +36,7 @@ namespace Moviesily.Models
         [Required]
         public int Active { get; set; }
 
+        public virtual ICollection<Review> Review { get; set; }
+
     }
 }

@@ -3,16 +3,15 @@
 @{
     ViewBag.Title = "Index";
 }
-<div class="col-lg-3">
-    There are @Model.Review review(s)
-    <a href="/Review/Index"><input type="submit" value="Go to reviews" class="belize-hole-flat-button searchButton" /></a>
-</div>
 
-<div class="col-lg-9" style="margin-top: 20px">
-    <h2 class="searchTitle">SEARCH MOVIES:</h2>
-    @Html.TextBox("SearchString")
-    <input type="submit" value="Search Movies" class="belize-hole-flat-button" />
-</div>
+@using (Html.BeginForm("Search", "HomeVMs", FormMethod.Get))
+{
+    <div class="col-lg-offset-3 col-lg-9" style="margin-top: 20px">
+        <h2 class="searchTitle">SEARCH MOVIES:</h2>
+        @Html.TextBox("SearchString")
+        <input type="submit" value="Search Movies" class="belize-hole-flat-button searchButton" />
+    </div>
+}
 
 <div class="col-lg-3 genres">
 
@@ -32,6 +31,7 @@
         <label>ReleaseYear |</label> @Html.DisplayFor(modelItem => item.ReleaseYear)<br />
         <label>Language |</label> @Html.DisplayFor(modelItem => item.Language)<br />
         <label>Descripton |</label> @Html.DisplayFor(modelItem => item.Description)<br />
+        <label>Reviews |</label> @Html.DisplayFor(modelItem => item.Review)<br />
     </div>
 }
 
