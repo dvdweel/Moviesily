@@ -261,11 +261,11 @@
     <Content Include="Views\Account\Details.cshtml" />
     <Content Include="Views\Account\Edit.cshtml" />
     <Content Include="Views\HomeVMs\Search.cshtml" />
-    <Content Include="Views\Review\Create.cshtml" />
     <Content Include="Views\Review\Delete.cshtml" />
     <Content Include="Views\Review\Details.cshtml" />
-    <Content Include="Views\Review\Edit.cshtml" />
     <Content Include="Views\Review\Index.cshtml" />
+    <Content Include="Views\Review\Create.cshtml" />
+    <Content Include="Views\Review\Edit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -275,7 +275,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\SearchVM\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

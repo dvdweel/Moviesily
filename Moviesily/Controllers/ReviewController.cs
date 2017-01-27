@@ -17,7 +17,6 @@ namespace Moviesily.Controllers
         // GET: Review
         public ActionResult Index()
         {
-           
             var reviews = db.Reviews.Include(r => r.Movie).Include(r => r.Register);
             return View(reviews.ToList());
         }
@@ -41,7 +40,7 @@ namespace Moviesily.Controllers
         public ActionResult Create()
         {
             ViewBag.MovieID = new SelectList(db.Movies, "MovieID", "Title");
-            ViewBag.UserID = new SelectList(db.Register, "UserID", "FirstName");
+            ViewBag.UserID = new SelectList(db.Register, "UserID", "Username");
             return View();
         }
 
@@ -52,9 +51,6 @@ namespace Moviesily.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ReviewID,UserID,MovieID,Content")] Review review)
         {
-            Register register = (Register)Session["UserData"];
-            review.UserID = register.UserID;
-
             if (ModelState.IsValid)
             {
                 db.Reviews.Add(review);
@@ -63,7 +59,7 @@ namespace Moviesily.Controllers
             }
 
             ViewBag.MovieID = new SelectList(db.Movies, "MovieID", "Title", review.MovieID);
-            ViewBag.UserID = new SelectList(db.Register, "UserID", "FirstName", review.UserID);
+            ViewBag.UserID = new SelectList(db.Register, "UserID", "Username", review.UserID);
             return View(review);
         }
 
@@ -80,7 +76,7 @@ namespace Moviesily.Controllers
                 return HttpNotFound();
             }
             ViewBag.MovieID = new SelectList(db.Movies, "MovieID", "Title", review.MovieID);
-            ViewBag.UserID = new SelectList(db.Register, "UserID", "FirstName", review.UserID);
+            ViewBag.UserID = new SelectList(db.Register, "UserID", "Username", review.UserID);
             return View(review);
         }
 
@@ -98,7 +94,7 @@ namespace Moviesily.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.MovieID = new SelectList(db.Movies, "MovieID", "Title", review.MovieID);
-            ViewBag.UserID = new SelectList(db.Register, "UserID", "FirstName", review.UserID);
+            ViewBag.UserID = new SelectList(db.Register, "UserID", "Username", review.UserID);
             return View(review);
         }
 
